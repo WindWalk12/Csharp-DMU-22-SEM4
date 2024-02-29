@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Day6exercise6.MainPage">
+
+    <ScrollView>
+        <toolkit:DockLayout>
+            <Button x:Name="btnNord" Clicked="btnNord_Clicked" toolkit:DockLayout.DockPosition="Top" Text="Nord" />
+            <Button x:Name="btnSyd" Clicked="btnSyd_Clicked" toolkit:DockLayout.DockPosition="Bottom" Text="Syd" />
+            <Button x:Name="btnVest" Clicked="btnVest_Clicked" toolkit:DockLayout.DockPosition="Left" Text="Vest" />
+            <Button x:Name="btnØst" Clicked="btnØst_Clicked" toolkit:DockLayout.DockPosition="Right" Text="Øst" />
+            <Label x:Name="lbl" toolkit:DockLayout.DockPosition="None" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+        </toolkit:DockLayout>
+        
+    </ScrollView>
+
+</ContentPage>
