@@ -2,23 +2,31 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
+        List<string> chkList = new List<string>();
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
+            var chkbtn = (CheckBox)sender;
+            var lbl = (Label)chkbtn.BindingContext;
+            if (chkbtn.IsChecked && !chkList.Contains(lbl.Text))
+            {
+                chkList.Add(lbl.Text);
+            }
             else
-                CounterBtn.Text = $"Clicked {count} times";
+            {
+                chkList.Remove(lbl.Text);
+            }
+            lblChk.Text = string.Join(", ", chkList);
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            var rbtn = (RadioButton)sender;
+            lblRbtn.Text = rbtn.Content.ToString() + " checked";
         }
     }
 
