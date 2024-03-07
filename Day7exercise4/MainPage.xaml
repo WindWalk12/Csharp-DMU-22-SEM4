@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Day7exercise4.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <CollectionView HeightRequest="300" x:Name="carsView" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Entry Text="{Binding Model}"></Entry>
+                            <Label Text="{Binding HorsePower}"></Label>
+                            <CheckBox IsChecked="{Binding ElectricPower}"></CheckBox>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Show car" Clicked="btnShow_Clicked"></Button>
+            <Button Text="Add car" Clicked="btnAddCar_Clicked"></Button>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
