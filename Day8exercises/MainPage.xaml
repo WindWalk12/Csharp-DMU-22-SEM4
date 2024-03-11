@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Day8exercises.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <CollectionView HeightRequest="300" x:Name="carsView" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Model"></Label>
+                            <Label Text="{Binding Model}"></Label>
+                            <Label Text="Horsepower"></Label>
+                            <Label Text="{Binding HorsePower}"></Label>
+                            <Label Text="Age"></Label>
+                            <Label Text="{Binding Age}"></Label>
+                            <Label Text="Id"></Label>
+                            <Label Text="{Binding OwnerId}"></Label>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <CollectionView HeightRequest="300" x:Name="OwnerView" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Name"></Label>
+                            <Label Text="{Binding Name}"></Label>
+                            <Label Text="Id"></Label>
+                            <Label Text="{Binding OwnerId}"></Label>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Add car" Clicked="ButtonAddCar_Clicked"></Button>
+            <Button Text="Add Owner" Clicked="ButtonOwner_Clicked"></Button>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
