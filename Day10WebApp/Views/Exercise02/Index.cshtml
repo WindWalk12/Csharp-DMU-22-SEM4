@@ -1,0 +1,12 @@
+﻿@using Day10WebApp.Models;
+@{
+    <h1>Persons</h1>
+    @foreach (Person person in ViewBag.Persons)
+    {
+        <p>Name: @person.Firstname @person.Lastname</p>
+        <p>Address: @person.Address @person.Zip @person.City</p>
+        <p>Phonenumbers: @string.Join(", ", person.PhoneNumbers)</p>
+        <p>Age: @person.Age</p>
+        <br />
+    }
+}
