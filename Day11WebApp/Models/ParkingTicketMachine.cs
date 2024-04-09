@@ -3,7 +3,7 @@
     public class ParkingTicketMachine
     {
         public int minutesPrKr = 2;
-        public int[] coinsToInsert;
+        public int[] coinsToInsert = new int[100];
         public int amountInserted;
         public DateTime timeNow;
 
@@ -13,31 +13,40 @@
             this.timeNow = DateTime.Now;
         }
 
-        public int[] CoinsToInsert()
+        public List<int> CoinsToInsert()
         {
-            return this.coinsToInsert;
+            return this.coinsToInsert.ToList();
         }
 
-        public DateTime TimeNow()
+        public string TimeNow
         {
-            return timeNow;
+            get
+            {
+                return this.timeNow.ToString("HH:mm");
+            }
         }
 
-        public DateTime PaidUntil()
+        public string PaidUntil
         {
-            return timeNow.AddMinutes(minutesPrKr * amountInserted);
+            get
+            {
+                return timeNow.AddMinutes(minutesPrKr * amountInserted).ToString("HH:mm");
+            }
         }
 
-        public int AmountInserted()
+        public int AmountInserted
         {
-            return amountInserted;
+            get
+            {
+                return amountInserted;
+            }
+            
         }
 
         public void InsertCoin(int kr)
         {
-            amountInserted += kr;
+            amountInserted = kr;
             coinsToInsert.Append(kr);
         }
-
     }
 }

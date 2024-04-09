@@ -1,0 +1,14 @@
+﻿@model Day11WebApp.Models.ParkingTicketMachine
+@{
+    ViewBag.Title = "Parkin Ticket";
+}
+
+<h2>Parking Ticket</h2>
+<div>
+    @Html.Label("Time issued:")
+    @Html.DisplayFor(p => p.TimeNow)
+</div>
+<div>
+    @Html.Label("Parking paid until:")
+    @Html.DisplayFor(p => p.PaidUntil)
+</div>

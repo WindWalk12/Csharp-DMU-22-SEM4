@@ -1,0 +1,38 @@
+﻿@model Day11WebApp.Models.ParkingTicketMachine
+@{
+    ViewBag.Title = "Parkin Ticket";
+}
+<div>
+    @Html.Label("Time now")
+    @Html.DisplayFor(p => p.TimeNow)
+</div>
+<div>
+    @Html.Label("Paid until")
+    @Html.DisplayFor(p => p.PaidUntil)
+</div>
+@if (ViewBag.cancel == true)
+{
+    @Html.Label("Info display")
+    <p style="display: inline">@ViewBag.amount kr has been paid back</p>
+} else
+{
+    @Html.Label("Info display")
+    <p style="display: inline">@ViewBag.amount kr is paid</p>
+}
+<br />
+@using (Html.BeginForm("Index", "Exercise02", FormMethod.Post))
+{
+    <h2>Coin Insert</h2>
+    <div>
+        <button type="submit" value="1" name="coin">1 kr</button>
+        <button type="submit" value="2" name="coin">2 kr</button>
+        <button type="submit" value="5" name="coin">5 kr</button>
+        <button type="submit" value="10" name="coin">10 kr</button>
+        <button type="submit" value="20" name="coin">20 kr</button>
+    </div>
+    <br />
+    <div>
+        <button type="submit" value="confirm" name="action">Confirm</button>
+        <button type="submit" value="cancel" name="action">Cancel</button>
+    </div>
+}
