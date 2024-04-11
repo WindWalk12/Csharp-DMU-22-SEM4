@@ -1,0 +1,10 @@
+﻿@model Day12WebApp.Models.Person
+@{
+}
+
+@using (Html.BeginForm("PersonCreatedSimpleTyper", "Person", FormMethod.Post))
+{
+    <h1>Person create</h1>
+    @Html.EditorForModel()
+    <input type="submit" name="Submit" />
+}
