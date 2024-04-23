@@ -8,6 +8,6 @@ namespace Day15WebApp
 {
     internal class Tronalddump
     {
-        public string value {  get; set; }
+        public string Value {  get; set; }
     }
 }

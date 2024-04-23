@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Net.Http.Json;
-using System.Text.Json.Serialization;
+﻿using System.Net.Http.Json;
 
 namespace Day15WebApp
 {
@@ -39,12 +37,9 @@ namespace Day15WebApp
         private async void GetTrumpQuote_Clicked(object sender, EventArgs e)
         {
             HttpClient client = new HttpClient();
-            Tronalddump td = await client.GetFromJsonAsync<Tronalddump>("http://www.tronalddump.io/random/quote");
-            string s = td.value;
-            List<string> strings = new List<string>();
-            strings.Add(s);
-            PersonsView.ItemsSource = strings;
+            client.DefaultRequestHeaders.Add("Accept", "*/*");
+            Tronalddump td = await client.GetFromJsonAsync<Tronalddump>("https://www.tronalddump.io/random/quote");
+            TronaldDumpLbl.Text = td.Value.ToString();
         }
     }
-
 }
