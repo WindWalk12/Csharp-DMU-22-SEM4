@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GUI.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+    Padding="30,0"
+    Spacing="25">
+            <Button x:Name="GetStudents" Text="Get Students" Clicked="GetStudents_Clicked"></Button>
+            <Button x:Name="GetStudentById" Text="Get Student by id" Clicked="GetStudentById_Clicked"></Button>
+            <Button x:Name="AddStudent" Text="Add Student" Clicked="AddStudent_Clicked"></Button>
+            <CollectionView HeightRequest="300" x:Name="StudentsView" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding StudentID}"></Label>
+                            <Label Text="{Binding Name}"></Label>
+                            <Label Text="{Binding StartDate}"></Label>
+                            <Label Text="{Binding StudentType}"></Label>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
