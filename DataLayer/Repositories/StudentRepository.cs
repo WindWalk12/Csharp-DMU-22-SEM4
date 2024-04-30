@@ -11,7 +11,7 @@ namespace DataLayer.Repositories
 {
     public class StudentRepository
     {
-        public static Student getStudent(int id)
+        public static Student GetStudent(int id)
         {
             using (StudentContext context = new StudentContext())
             {
@@ -49,6 +49,16 @@ namespace DataLayer.Repositories
             using (StudentContext context = new StudentContext())
             {
                 return StudentMapper.Map(context.Students.ToList());
+            }
+        }
+
+        public static void DeleteEmployee(int id)
+        {
+            using (StudentContext context = new StudentContext())
+            {
+                DataLayer.Model.Student s = context.Students.Find(id);
+                context.Students.Remove(s);
+                context.SaveChanges();
             }
         }
     }

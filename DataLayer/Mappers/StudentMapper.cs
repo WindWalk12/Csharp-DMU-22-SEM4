@@ -11,18 +11,16 @@ namespace DataLayer.Mappers
     {
         public static DTO.Model.Student  Map(Student student)
         {
-            return new DTO.Model.Student(student.StudentID, student.Name, student.StartDate, student.StudentType);
+            return new DTO.Model.Student(student.StudentID, student.Name, student.StartDate, student.StudentType, student.TeamID);
         }
         public static Student Map(DTO.Model.Student student)
         {
-            return new Student(student.StudentID, student.Name, student.StartDate, student.StudentType);
+            return new Student(student.StudentID, student.Name, student.StartDate, student.StudentType, student.TeamID);
         }
 
-        internal static void Update(DTO.Model.Student student, Student dataemp)
+        public static void Update(DTO.Model.Student student, Student dataemp)
         {
             dataemp.Name = student.Name;
-            dataemp.StartDate = student.StartDate;
-            dataemp.StudentType = student.StudentType;
         }
 
         public static List<DTO.Model.Student> Map(List<Student> students)

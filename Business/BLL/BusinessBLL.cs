@@ -10,10 +10,10 @@ namespace Business.BLL
 {
     public class BusinessBLL
     {
-        public Student getStudent(int id)
+        public Student GetStudent(int id)
         {
             //if (id < 0) throw new IndexOutOfRangeException();
-            return StudentRepository.getStudent(id);
+            return StudentRepository.GetStudent(id);
         }
         public void AddEmployee(Student student)
         {
@@ -25,9 +25,29 @@ namespace Business.BLL
             StudentRepository.EditEmployee(student);
         }
 
-        public List<Student> getStudents()
+        public List<Student> GetStudents()
         {
             return StudentRepository.GetStudents();
+        }
+
+        public void DeleteEmployee(int id)
+        {
+            StudentRepository.DeleteEmployee(id);
+        }
+
+        public Team GetTeam(int id)
+        {
+            return TeamRepository.GetTeam(id);
+        }
+
+        public void AddTeam(Team team)
+        {
+            TeamRepository.AddTeam(team);
+        }
+
+        public List<Team> GetTeams()
+        {
+            return TeamRepository.GetTeams();
         }
     }
 }

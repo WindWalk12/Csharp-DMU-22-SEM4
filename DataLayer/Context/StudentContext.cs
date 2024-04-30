@@ -30,12 +30,18 @@ namespace DataLayer.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Team>().HasData(new Team[]
+            {
+                new Team{TeamID = -1, Name = "Test", Description = "Test" }
+            });
+
             modelBuilder.Entity<Student>().HasData(new Student[]
             {
-                new Student{StudentID = -1, Name = "Test", StartDate = DateTime.Now, StudentType = StudentTypes.Undergraduate }
+                new Student{StudentID = -1, Name = "Test", StartDate = DateTime.Now, StudentType = StudentTypes.Undergraduate, TeamID = -1 }
             });
         }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Team> Teams { get; set; }
     }
 }

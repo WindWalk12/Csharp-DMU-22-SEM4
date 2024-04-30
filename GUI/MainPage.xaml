@@ -10,6 +10,8 @@
             <Button x:Name="GetStudents" Text="Get Students" Clicked="GetStudents_Clicked"></Button>
             <Button x:Name="GetStudentById" Text="Get Student by id" Clicked="GetStudentById_Clicked"></Button>
             <Button x:Name="AddStudent" Text="Add Student" Clicked="AddStudent_Clicked"></Button>
+            <Button x:Name="GetTeams" Text="Get Teams" Clicked="GetTeams_Clicked"></Button>
+            <Button x:Name="AddTeam" Text="Add Team" Clicked="AddTeam_Clicked"></Button>
             <CollectionView HeightRequest="300" x:Name="StudentsView" SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -18,10 +20,30 @@
                             <Label Text="{Binding Name}"></Label>
                             <Label Text="{Binding StartDate}"></Label>
                             <Label Text="{Binding StudentType}"></Label>
+                            <Label Text="{Binding TeamID}"></Label>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <CollectionView HeightRequest="300" x:Name="TeamsView" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding TeamID}"></Label>
+                            <Label Text="{Binding Name}"></Label>
+                            <Label Text="{Binding Description}"></Label>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label Text="Id"></Label>
+            <Entry x:Name="IdEntryDelete"></Entry>
+            <Button x:Name="DeleteStudent" Text="Delete Student" Clicked="DeleteStudent_Clicked"></Button>
+            <Label Text="Id"></Label>
+            <Entry x:Name="IdEntryUpdate"></Entry>
+            <Label Text="Name"></Label>
+            <Entry x:Name="NameEntryUpdate"></Entry>
+            <Button x:Name="UpdateStudent" Text="Update Student" Clicked="UpdateStudent_Clicked"></Button>
         </VerticalStackLayout>
     </ScrollView>
 
