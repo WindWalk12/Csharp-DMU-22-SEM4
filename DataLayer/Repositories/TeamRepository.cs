@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using DTO.Model;
 using DataLayer.Context;
 using DataLayer.Mappers;
+using System.ComponentModel.Design;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer.Repositories
 {
@@ -17,6 +19,22 @@ namespace DataLayer.Repositories
             {
                 //Maybe throw exception if not found
                 return TeamMapper.Map(context.Teams.Find(id));
+            }
+        }
+
+        public static TeamDetail GetTeamDetail(int id)
+        {
+            using (StudentContext context = new StudentContext())
+            {
+                IQueryable<Model.Team> team = context.Teams.Where(t => t.TeamID == id).Include(t => t.Students);
+                if (team.Count() == 1)
+                {
+                    return TeamMapper.MapDetail(team.First());
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
             }
         }
 
@@ -33,6 +51,16 @@ namespace DataLayer.Repositories
             using (StudentContext context = new StudentContext())
             {
                 return TeamMapper.Map(context.Teams.ToList());
+            }
+        }
+
+        public static void AddStudentToTeam(int teamID, int studentID)
+        {
+            using (StudentContext context = new StudentContext())
+            {
+                Model.Student s = context.Students.Where(s => s.StudentID == studentID).FirstOrDefault();
+                s.StudentID = teamID;
+                context.SaveChanges();
             }
         }
     }

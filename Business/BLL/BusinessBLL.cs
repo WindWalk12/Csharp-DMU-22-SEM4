@@ -18,11 +18,11 @@ namespace Business.BLL
         public void AddEmployee(Student student)
         {
             //valider employee
-            StudentRepository.AddEmployee(student);
+            StudentRepository.AddStudent(student);
         }
         public void EditEmployee(Student student)
         {
-            StudentRepository.EditEmployee(student);
+            StudentRepository.EditStudent(student);
         }
 
         public List<Student> GetStudents()
@@ -32,7 +32,7 @@ namespace Business.BLL
 
         public void DeleteEmployee(int id)
         {
-            StudentRepository.DeleteEmployee(id);
+            StudentRepository.DeleteStudent(id);
         }
 
         public Team GetTeam(int id)
@@ -48,6 +48,16 @@ namespace Business.BLL
         public List<Team> GetTeams()
         {
             return TeamRepository.GetTeams();
+        }
+
+        public TeamDetail GetTeamDetail(int id)
+        {
+            return TeamRepository.GetTeamDetail(id);
+        }
+
+        public void AddStudentToTeam(int StudentID, int TeamID)
+        {
+            StudentRepository.AddStudentToTeam(StudentID, TeamID);
         }
     }
 }

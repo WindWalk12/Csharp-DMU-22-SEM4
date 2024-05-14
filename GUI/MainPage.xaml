@@ -7,6 +7,8 @@
         <VerticalStackLayout
     Padding="30,0"
     Spacing="25">
+            <Label Text="Student id"></Label>
+            <Entry x:Name="IdEntryGetStudent"></Entry>
             <Button x:Name="GetStudents" Text="Get Students" Clicked="GetStudents_Clicked"></Button>
             <Button x:Name="GetStudentById" Text="Get Student by id" Clicked="GetStudentById_Clicked"></Button>
             <Button x:Name="AddStudent" Text="Add Student" Clicked="AddStudent_Clicked"></Button>
@@ -44,6 +46,25 @@
             <Label Text="Name"></Label>
             <Entry x:Name="NameEntryUpdate"></Entry>
             <Button x:Name="UpdateStudent" Text="Update Student" Clicked="UpdateStudent_Clicked"></Button>
+            <Label Text="Student id"></Label>
+            <Entry x:Name="IdEntryStudent"></Entry>
+            <Label Text="Team id"></Label>
+            <Entry x:Name="IdEntryTeam"></Entry>
+            <Button x:Name="AddStudentToTeam" Text="Add student to team" Clicked="AddStudentToTeam_Clicked"></Button>
+            <Button x:Name="ShowStudentsOnTeam" Text="Show students on team" Clicked="ShowStudentsOnTeam_Clicked"></Button>
+            <CollectionView HeightRequest="300" x:Name="StudentsOnTeamView" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding StudentID}"></Label>
+                            <Label Text="{Binding Name}"></Label>
+                            <Label Text="{Binding StartDate}"></Label>
+                            <Label Text="{Binding StudentType}"></Label>
+                            <Label Text="{Binding TeamID}"></Label>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 

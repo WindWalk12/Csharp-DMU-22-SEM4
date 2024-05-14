@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Model
+namespace DTO.Model
 {
-    internal class Team
+    public class TeamDetail
     {
         public int TeamID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Student> Students { get; set; }
 
-        public Team()
+        public TeamDetail()
         {
 
         }
 
-        public Team(int teamId, string name, string description, List<Student> students)
+        public TeamDetail(int teamId, string name, string description, List<Student> students)
         {
             TeamID = teamId;
             Name = name;
@@ -26,17 +26,11 @@ namespace DataLayer.Model
             Students = students;
         }
 
-        public Team(int teamId, string name, string description)
-        {
-            TeamID = teamId;
-            Name = name;
-            Description = description;
-        }
-
-        public Team(string name, string description)
+        public TeamDetail(string name, string description, List<Student> students)
         {
             Name = name;
             Description = description;
+            Students = students;
         }
     }
 }

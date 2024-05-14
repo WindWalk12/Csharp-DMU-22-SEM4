@@ -19,7 +19,7 @@ namespace DataLayer.Repositories
                 return StudentMapper.Map(context.Students.Find(id));
             }
         }
-        public static void AddEmployee(Student student)
+        public static void AddStudent(Student student)
         {
             using (StudentContext context = new StudentContext())
             {
@@ -28,7 +28,7 @@ namespace DataLayer.Repositories
             }
         }
 
-        public static void EditEmployee(Student student)
+        public static void EditStudent(Student student)
         {
             using (StudentContext context = new StudentContext())
             {
@@ -52,12 +52,22 @@ namespace DataLayer.Repositories
             }
         }
 
-        public static void DeleteEmployee(int id)
+        public static void DeleteStudent(int id)
         {
             using (StudentContext context = new StudentContext())
             {
                 DataLayer.Model.Student s = context.Students.Find(id);
                 context.Students.Remove(s);
+                context.SaveChanges();
+            }
+        }
+
+        public static void AddStudentToTeam(int id, int teamId)
+        {
+            using (StudentContext context = new StudentContext())
+            {
+                DataLayer.Model.Student s = context.Students.Find(id);
+                s.TeamID = teamId;
                 context.SaveChanges();
             }
         }

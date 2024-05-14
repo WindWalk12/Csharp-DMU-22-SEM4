@@ -1,5 +1,6 @@
 ﻿using Business.BLL;
 using DTO.Model;
+using System.Net.Http.Json;
 namespace GUI
 {
     public partial class MainPage : ContentPage
@@ -12,17 +13,19 @@ namespace GUI
         }
 
 
-        private void GetStudents_Clicked(object sender, EventArgs e)
+        private async void GetStudents_Clicked(object sender, EventArgs e)
         {
-            List<Student> students = businessBLL.GetStudents();
+            HttpClient client = new HttpClient();
+            List<Student> students = await client.GetFromJsonAsync<List<Student>>("http://localhost:5183/api/Students/ShowStudents");
             StudentsView.ItemsSource = students;
         }
 
-        private void GetStudentById_Clicked(object sender, EventArgs e)
+        private async void GetStudentById_Clicked(object sender, EventArgs e)
         {
-            Student student = businessBLL.GetStudent(-1);
-            List<Student> students = new List<Student>();
-            students.Add(student);
+            int StudentId = Convert.ToInt32(IdEntryGetStudent.Text);
+            HttpClient client = new HttpClient();
+            Student student = await client.GetFromJsonAsync<Student>($"http://localhost:5183/api/Students/GetStudentById/{StudentId}");
+            List<Student> students = new List<Student> { student };
             StudentsView.ItemsSource = students;
         }
 
@@ -58,6 +61,19 @@ namespace GUI
             Team t = new Team("HoldAbC", "Det sjove hold");
             businessBLL.AddTeam(t);
         }
-    }
 
+        private void AddStudentToTeam_Clicked(object sender, EventArgs e)
+        {
+            int StudentId = Convert.ToInt32(IdEntryStudent.Text);
+            int TeamId = Convert.ToInt32(IdEntryTeam.Text);
+            businessBLL.AddStudentToTeam(StudentId, TeamId);
+        }
+
+        private void ShowStudentsOnTeam_Clicked(object sender, EventArgs e)
+        {
+            int TeamId = Convert.ToInt32(IdEntryTeam.Text);
+            TeamDetail teamDetail = businessBLL.GetTeamDetail(TeamId);
+            StudentsOnTeamView.ItemsSource = teamDetail.Students;
+        }
+    }
 }
