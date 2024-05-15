@@ -39,7 +39,7 @@ namespace DataLayer.Mappers
             teamDetail.TeamID = team.TeamID;
             teamDetail.Name = team.Name;
             teamDetail.Description = team.Description;
-            teamDetail.Students = StudentMapper.Map(team.Students);
+            teamDetail.Students = StudentMapper.Map(team.students);
             return teamDetail;
         }
     }

@@ -20,7 +20,7 @@ namespace Business.BLL
             //valider employee
             StudentRepository.AddStudent(student);
         }
-        public void EditEmployee(Student student)
+        public void EditStudent(Student student)
         {
             StudentRepository.EditStudent(student);
         }
@@ -30,7 +30,7 @@ namespace Business.BLL
             return StudentRepository.GetStudents();
         }
 
-        public void DeleteEmployee(int id)
+        public void DeleteStudent(int id)
         {
             StudentRepository.DeleteStudent(id);
         }

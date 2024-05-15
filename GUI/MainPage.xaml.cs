@@ -38,7 +38,7 @@ namespace GUI
         private void DeleteStudent_Clicked(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(IdEntryDelete.Text);
-            businessBLL.DeleteEmployee(id);
+            businessBLL.DeleteStudent(id);
         }
 
         private void UpdateStudent_Clicked(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace GUI
             string name = NameEntryUpdate.Text;
             Student s = businessBLL.GetStudent(id);
             s.Name = name;
-            businessBLL.EditEmployee(s);
+            businessBLL.EditStudent(s);
         }
 
         private void GetTeams_Clicked(object sender, EventArgs e)
